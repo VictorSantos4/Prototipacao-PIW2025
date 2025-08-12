@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #7b3fa1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    color: white;
+}
+
+.logo {
+    width: 60px;
+    margin-top: 10px;
+}
+
+.topo h1 {
+    font-size: 1.8rem;
+    margin: 5px 0;
+}
+
+.subtitulo {
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.caixa-login {
+    background: white;
+    color: #4a235a;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.caixa-login h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.caixa-login .info {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 0.85rem;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 8px 0 15px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    background-color: #59b3a5;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #4a9d90;
+}
+
+.termos {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 10px;
+    color: #777;
+}
