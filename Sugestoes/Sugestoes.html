@@ -1,14 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugestões</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='Sugestoes.css'>
-    <script src='main.js'></script>
+    <link rel="stylesheet" href="Sugestoes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <!-- Cabeçalho -->
+    <header>
+        <span class="back-arrow">←</span>
+        <h1>Sugestões</h1>
+    </header>
+
+    <!-- Conteúdo -->
+    <main class="layout">
+        <!-- Formulário -->
+        <section class="form-section">
+            <h2>Envie sua ideia</h2>
+            <p class="subtitle">Ajude a melhorar nosso app com suas sugestões</p>
+            <input type="text" placeholder="Título da sua sugestão">
+            <textarea placeholder="Descreva sua ideia..."></textarea>
+            <button>Enviar</button>
+        </section>
+
+        <!-- Sugestões Populares -->
+        <section class="popular-section">
+            <h3>Sugestões populares</h3>
+
+            <div class="suggestion">
+                <div>
+                    <p class="title">Modo noturno para leitura</p>
+                    <p class="author">Por: Maria S.</p>
+                </div>
+                <span class="votes">87</span>
+            </div>
+
+            <div class="suggestion">
+                <div>
+                    <p class="title">Podcasts sobre os temas</p>
+                    <p class="author">Por: Carlos M.</p>
+                </div>
+                <span class="votes">64</span>
+            </div>
+
+            <div class="suggestion">
+                <div>
+                    <p class="title">Grupos de estudo</p>
+                    <p class="author">Por: João P.</p>
+                </div>
+                <span class="votes">42</span>
+            </div>
+
+            <div class="history-card">
+                <p>30+ ideias implementadas</p>
+                <a href="#">Ver histórico</a>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
+

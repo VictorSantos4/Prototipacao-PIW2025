@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #F2E1D8;
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
+    background-color: #F2E1D8;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+header h1 {
+    flex: 1;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #8143AB;
+}
+
+.back-arrow {
+    font-size: 22px;
+    cursor: pointer;
+    color: #8143AB;
+    transition: transform 0.2s ease;
+}
+
+.back-arrow:hover {
+    transform: translateX(-3px);
+}
+
+/* Layout padrão (mobile) */
+.layout {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+}
+
+/* Cartões base */
+.form-section, .popular-section {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0px 6px 16px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s ease;
+}
+
+.form-section:hover, .popular-section:hover {
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+}
+
+/* Formulário */
+.form-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #8143AB;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 16px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    font-size: 14px;
+    background: #fafafa;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #8143AB;
+    background: white;
+}
+
+textarea {
+    resize: none;
+    height: 90px;
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #8143AB, #6d3591);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Sugestões Populares */
+.popular-section h3 {
+    font-size: 15px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #8143AB;
+}
+
+.suggestion {
+    background: #F2E1D8;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.suggestion:hover {
+    background: #e9d3c9;
+}
+
+.suggestion .title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.suggestion .author {
+    font-size: 12px;
+    color: #555;
+}
+
+.votes {
+    color: #8143AB;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* Card de histórico */
+.history-card {
+    background: #F2E1D8;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.history-card a {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #8143AB;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.history-card a:hover {
+    text-decoration: underline;
+}
+
+/* Modo desktop */
+@media (min-width: 768px) {
+    .layout {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 32px;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .form-section, .popular-section {
+        flex: 1;
+    }
+
+    .form-section {
+        max-width: 420px;
+    }
+}
