@@ -2,163 +2,138 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 body {
     background-color: #F2E1D8;
-    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.app-container {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
 }
 
 /* Cabeçalho */
 header {
     display: flex;
     align-items: center;
-    padding: 18px 24px;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
     background-color: #F2E1D8;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 header h1 {
     flex: 1;
     text-align: center;
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 18px;
     color: #8143AB;
 }
 
 .back-arrow {
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
     color: #8143AB;
-    transition: transform 0.2s ease;
-}
-
-.back-arrow:hover {
-    transform: translateX(-3px);
-}
-
-/* Layout padrão (mobile) */
-.layout {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding: 24px;
-}
-
-/* Cartões base */
-.form-section, .popular-section {
-    background: white;
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0px 6px 16px rgba(0,0,0,0.06);
-    transition: box-shadow 0.2s ease;
-}
-
-.form-section:hover, .popular-section:hover {
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
 }
 
 /* Formulário */
+.form-section {
+    padding: 15px;
+}
+
 .form-section h2 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: #8143AB;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
 }
 
 .subtitle {
-    font-size: 13px;
+    font-size: 12px;
     color: #666;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 }
 
 input, textarea {
     width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
     font-size: 14px;
-    background: #fafafa;
-    transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-input:focus, textarea:focus {
-    outline: none;
-    border-color: #8143AB;
-    background: white;
 }
 
 textarea {
     resize: none;
-    height: 90px;
+    height: 80px;
 }
 
-/* Botão */
 button {
     width: 100%;
-    padding: 12px;
-    background: linear-gradient(90deg, #8143AB, #6d3591);
+    padding: 10px;
+    background: #8143AB;
     color: white;
     border: none;
-    border-radius: 10px;
-    font-weight: 600;
+    border-radius: 8px;
+    font-weight: bold;
     font-size: 14px;
     cursor: pointer;
-    transition: opacity 0.2s ease;
 }
 
 button:hover {
-    opacity: 0.9;
+    background: #6d3591;
 }
 
 /* Sugestões Populares */
+.popular-section {
+    background: #F2E1D8;
+    padding: 15px;
+}
+
 .popular-section h3 {
-    font-size: 15px;
-    margin-bottom: 15px;
-    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 10px;
     color: #8143AB;
 }
 
 .suggestion {
-    background: #F2E1D8;
+    background: white;
     display: flex;
     justify-content: space-between;
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
     align-items: center;
-    transition: background 0.2s ease;
-}
-
-.suggestion:hover {
-    background: #e9d3c9;
 }
 
 .suggestion .title {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 .suggestion .author {
     font-size: 12px;
-    color: #555;
+    color: #666;
 }
 
 .votes {
     color: #8143AB;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 14px;
 }
 
-/* Card de histórico */
 .history-card {
-    background: #F2E1D8;
-    padding: 14px;
-    border-radius: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
     font-size: 14px;
-    margin-top: 12px;
+    margin-top: 8px;
     text-align: center;
 }
 
@@ -167,30 +142,9 @@ button:hover {
     margin-top: 4px;
     font-size: 12px;
     color: #8143AB;
-    font-weight: 600;
     text-decoration: none;
 }
 
 .history-card a:hover {
     text-decoration: underline;
-}
-
-/* Modo desktop */
-@media (min-width: 768px) {
-    .layout {
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 32px;
-        max-width: 1100px;
-        margin: auto;
-    }
-
-    .form-section, .popular-section {
-        flex: 1;
-    }
-
-    .form-section {
-        max-width: 420px;
-    }
 }
