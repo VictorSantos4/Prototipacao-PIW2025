@@ -1,81 +1,87 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Admin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="adm.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Topo -->
-        <header class="top-bar">
-            <div class="logo">
-                <span class="icon">👤</span>
-                <div>
-                    <p class="title">Painel</p>
-                    <p class="subtitle">Admin</p>
+
+    <header class="header-admin">
+        <div class="user-info">
+            <i class="fa-solid fa-user"></i>
+            <h1>Painel Admin</h1>
+        </div>
+        <div class="settings">
+            <i class="fa-solid fa-gear"></i>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <h2 class="section-title">Bem-vindo, Administrador</h2>
+        
+        <div class="card card-stats-single">
+            <div class="icon-container">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div class="text-container">
+                <p class="stats-label">Estatísticas</p>
+                <p class="stats-value">2.4k acessos hoje</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Upload de Conteúdo</h2>
+
+        <div class="card card-upload">
+            <div class="upload-content">
+                <i class="fa-solid fa-folder-plus"></i>
+                <p>Novo Artigo</p>
+            </div>
+            <button class="btn-inserir">Inserir</button>
+        </div>
+
+        <h2 class="section-title">Estatísticas de Uso</h2>
+
+        <div class="card-group">
+            <div class="card card-stats-small">
+                <p class="stats-label">Acessos Totais</p>
+                <p class="stats-total">12.458</p>
+                <p class="stats-gain">+8% esta semana</p>
+            </div>
+            <div class="card card-stats-small">
+                <p class="stats-label">Tema Mais Buscado</p>
+                <p class="stats-topic">Tecnologia</p>
+                <p class="stats-share">32% das buscas</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Comentários Recentes</h2>
+
+        <div class="card card-comment">
+            <div class="comment-header">
+                <div class="comment-author-info">
+                    <p class="comment-author">Ricardo Oliveira</p>
+                    <p class="comment-time">Hoje, 14:32</p>
                 </div>
             </div>
-            <span class="settings">⚙</span>
-        </header>
-
-        <!-- Boas-vindas -->
-        <section class="welcome">
-            <h2>Bem-vindo, Administrador</h2>
-        </section>
-
-        <!-- Estatísticas -->
-        <section class="card stats">
-            <div class="stats-icon">📊</div>
-            <div>
-                <h3>Estatísticas</h3>
-                <p>2.4k acessos hoje</p>
-            </div>
-        </section>
-
-        <!-- Upload de conteúdo -->
-        <section class="card">
-            <h3>Upload de Conteúdo</h3>
-            <div class="upload-item">
-                <span>📝 Novo Artigo</span>
-                <button class="insert-btn">Inserir</button>
-            </div>
-        </section>
-
-        <!-- Estatísticas de uso -->
-        <section class="card">
-            <h3>Estatísticas de Uso</h3>
-            <div class="usage-stats">
-                <div class="usage-card">
-                    <p class="big-text">12.458</p>
-                    <p class="small-text">Acessos Totais</p>
-                    <span class="percent">+8% esta semana</span>
-                </div>
-                <div class="usage-card">
-                    <p class="small-text">Tema Mais Buscado</p>
-                    <p class="big-text">Tecnologia</p>
-                    <span class="percent">22% das buscas</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Comentários -->
-        <section class="card">
-            <h3>Comentários Recentes</h3>
-            <div class="comment">
-                <p class="comment-author">Ricardo Oliveira</p>
+            <div class="comment-body">
                 <p class="comment-text">Excelente artigo sobre inteligência artificial! Muito esclarecedor.</p>
-                <div class="comment-footer">
-                    <span class="time">Hoje, 14:32</span>
-                    <div class="comment-actions">
-                        <button class="approve-btn">Aprovar</button>
-                        <button class="reject-btn">Rejeitar</button>
-                    </div>
-                </div>
             </div>
-        </section>
-    </div>
+            <div class="comment-actions">
+                <button class="btn-approve">Aprovar</button>
+                <button class="btn-reject">Rejeitar</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="adm.js"></script>
+
 </body>
 </html>

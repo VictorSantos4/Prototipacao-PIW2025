@@ -4,58 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugestões</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Sugestoes.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Cabeçalho -->
-        <header>
-            <span class="back-arrow">←</span>
-            <h1>Sugestões</h1>
-        </header>
+    <div class="container">
+        <h2 class="page-title">Sugestões</h2>
 
         <!-- Formulário -->
-        <section class="form-section">
-            <h2>Envie sua ideia</h2>
+        <section class="card">
+            <h3>Envie sua ideia</h3>
             <p class="subtitle">Ajude a melhorar nosso app com suas sugestões</p>
             <input type="text" placeholder="Título da sua sugestão">
             <textarea placeholder="Descreva sua ideia..."></textarea>
-            <button>Enviar</button>
+            <button class="send-btn">Enviar</button>
         </section>
 
-        <!-- Sugestões Populares -->
-        <section class="popular-section">
+        <!-- Lista de sugestões -->
+        <section class="card">
             <h3>Sugestões populares</h3>
 
-            <div class="suggestion">
+            <div class="suggestion-item">
                 <div>
-                    <p class="title">Modo noturno para leitura</p>
-                    <p class="author">Por: Maria S.</p>
+                    <strong>Modo noturno para leitura</strong>
+                    <p>Por: Maria S.</p>
                 </div>
                 <span class="votes">87</span>
             </div>
 
-            <div class="suggestion">
+            <div class="suggestion-item">
                 <div>
-                    <p class="title">Podcasts sobre os temas</p>
-                    <p class="author">Por: Carlos M.</p>
+                    <strong>Podcasts sobre os temas</strong>
+                    <p>Por: Carlos M.</p>
                 </div>
                 <span class="votes">64</span>
             </div>
 
-            <div class="suggestion">
+            <div class="suggestion-item">
                 <div>
-                    <p class="title">Grupos de estudo</p>
-                    <p class="author">Por: João P.</p>
+                    <strong>Grupos de estudo</strong>
+                    <p>Por: João P.</p>
                 </div>
                 <span class="votes">42</span>
             </div>
 
-            <div class="history-card">
-                <p>30+ ideias implementadas</p>
+            <div class="history-box">
+                <p>📌 30+ ideias implementadas</p>
                 <a href="#">Ver histórico</a>
             </div>
         </section>
     </div>
+
+
+     <script src="sugestoes.js"></script>
 </body>
 </html>
+
