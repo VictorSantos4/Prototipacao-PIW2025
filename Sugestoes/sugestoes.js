@@ -1,25 +1,87 @@
-// Seleciona o botão de envio
-const botaoEnviar = document.querySelector('button');
+document.addEventListener("DOMContentLoaded", () => {
+    const titleInput = document.querySelector("#titulo");
+    const descInput = document.querySelector("#descricao");
+    const sendBtn = document.querySelector("#enviarSugestao");
+    const suggestionsList = document.querySelector("#listaSugestoes");
 
-// Adiciona um ouvinte de evento para o clique no botão
-botaoEnviar.addEventListener('click', function(event) {
-    // Previne o envio padrão do formulário
-    event.preventDefault();
+    // Carregar sugestões salvas
+    let sugestoes = JSON.parse(localStorage.getItem("sugestoes")) || [];
+    renderSugestoes();
 
-    // Seleciona os campos de título e descrição
-    const tituloInput = document.querySelector('input[placeholder="Título da sua sugestão"]');
-    const descricaoTextarea = document.querySelector('textarea[placeholder="Descreva sua ideia..."]');
+    // Função para renderizar as sugestões na tela
+    function renderSugestoes() {
+        suggestionsList.innerHTML = "";
+        sugestoes.forEach((sugestao, index) => {
+            const item = document.createElement("div");
+            item.classList.add("sugestao");
 
-    // Obtém os valores dos campos e remove espaços em branco no início e no fim
-    const titulo = tituloInput.value.trim();
-    const descricao = descricaoTextarea.value.trim();
+            item.innerHTML = `
+                <div>
+                    <strong>${sugestao.titulo}</strong>
+                    <p>${sugestao.descricao}</p>
+                    <small>Por: ${sugestao.autor}</small>
+                </div>
+                <div class="acoes">
+                    <button class="votar">👍 ${sugestao.votos}</button>
+                    <button class="excluir">🗑</button>
+                </div>
+            `;
 
-    // Verifica se o título ou a descrição estão vazios
-    if (titulo === '' || descricao === '') {
-        alert('Por favor, preencha todos os campos antes de enviar.');
-    } else {
-        // Se ambos os campos estiverem preenchidos, você pode prosseguir com o envio
-        alert('Sugestão enviada com sucesso!');
-        // Aqui você adicionaria a lógica para enviar os dados para o servidor
+            // Botão de votar
+            item.querySelector(".votar").addEventListener("click", () => {
+                sugestoes[index].votos++;
+                salvarSugestoes();
+                renderSugestoes();
+            });
+
+            // Botão de excluir
+            item.querySelector(".excluir").addEventListener("click", () => {
+                sugestoes.splice(index, 1);
+                salvarSugestoes();
+                renderSugestoes();
+            });
+
+            suggestionsList.appendChild(item);
+        });
     }
+
+    // Função para salvar no navegador
+    function salvarSugestoes() {
+        localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
+    }
+
+    // Evento do botão Enviar
+    sendBtn.addEventListener("click", () => {
+        const titulo = titleInput.value.trim();
+        const descricao = descInput.value.trim();
+
+        if (titulo === "" || descricao === "") {
+            alert("Por favor, preencha todos os campos!");
+            return;
+        }
+
+        // Criar sugestão
+        const novaSugestao = {
+            titulo: titulo,
+            descricao: descricao,
+            autor: "Você",
+            votos: 0
+        };
+
+        sugestoes.push(novaSugestao);
+        salvarSugestoes();
+        renderSugestoes();
+
+        // Limpar campos
+        titleInput.value = "";
+        descInput.value = "";
+
+        const voltarBtn = document.querySelector("#voltarBtn");
+if (voltarBtn) {
+    voltarBtn.addEventListener("click", () => {
+        window.history.back();
+    });
+}
+
+    });
 });
