@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Conteúdo</title>
+  <link rel="stylesheet" href="adicionar-conteudo.css">
+  <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Cabeçalho -->
+    <header>
+      <h2>Adicionar<br><span>Conteúdo</span></h2>
+    </header>
+
+    <!-- Formulário -->
+    <form id="formConteudo">
+      <!-- Título -->
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" placeholder="Digite o título do artigo">
+
+      <!-- Categoria -->
+      <label for="categoria">Categoria</label>
+      <select id="categoria">
+        <option selected disabled>Selecione uma categoria</option>
+        <option>Ansiedade</option>
+        <option>Depressão</option>
+        <option>Autoconhecimento</option>
+        <option>Estresse</option>
+      </select> 
+
+      <!-- Upload de Imagem -->
+      <label for="imagem">Envie uma Imagem ou Arquivo</label>
+      <div class="upload-area" onclick="document.getElementById('imagem').click()">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p>Clique para fazer upload</p>
+        <input type="file" id="imagem" hidden>
+      </div>
+
+      <!-- Conteúdo -->
+      <label for="conteudo">Descrição (Opcional)</label>
+      <textarea id="conteudo" placeholder="Escreva o conteúdo do seu artigo aqui..."></textarea>
+
+      <!-- Switch de comentários -->
+      <div class="switch-area">
+        <span>Permitir comentários</span>
+        <label class="switch">
+          <input type="checkbox" id="comentarios">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Botões -->
+      <div class="botoes">
+        <button type="button" class="cancelar">Cancelar</button>
+        <button type="submit" class="salvar">Publicar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Script separado -->
+  <script src="adicionar-conteudo.js"></script>
+</body>
+</html>

@@ -54,11 +54,12 @@ h1 {
   font-size: 1em;
   cursor: pointer;
   width: 100%;
-  transition: 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 .boas-vindas button:hover {
   background-color: #672f93;
+  transform: scale(1.1);
 }
 
 footer {
@@ -72,3 +73,12 @@ footer a {
   color: #1d142e;
   text-decoration: underline;
 }
+
+a{
+  color: whitesmoke;
+  list-style: none;
+  text-decoration: none;
+  text-transform: none;
+  transition: all 0.3s ease-in-out;
+}
+

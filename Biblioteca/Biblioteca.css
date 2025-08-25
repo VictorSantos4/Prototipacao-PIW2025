@@ -81,3 +81,15 @@ footer {
 .bottom-nav .active {
   border-bottom: 2px solid #8143ab;
 }
+
+
+a{
+  list-style: none;
+  text-decoration: none;
+
+}
+
+a:hover{
+  color: white;
+}
+
