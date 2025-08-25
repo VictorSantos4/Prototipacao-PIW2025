@@ -1,177 +1,291 @@
+/* Importação da fonte Poppins e ícones do Font Awesome */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+/* Variáveis de cores */
+:root {
+    --primary-color: #8143AB;
+    --secondary-color: #F2E1D8;
+    --text-color-dark: #333;
+    --text-color-light: #fff;
+    --bg-color-page: #f0f0f0;
+    --btn-approve-color: #8143AB;
+    --btn-reject-color: #e5e5e5;
+}
+
+/* Estilos gerais */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color-page);
+    color: var(--text-color-dark);
 }
 
-.app-container {
-    background: #fff;
-    width: 100%;
-    max-width: 380px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
-}
-
-/* Topo */
-.top-bar {
+/* Header */
+.header-admin {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #8143AB;
-    color: white;
-    padding: 12px 16px;
 }
 
-.logo {
+.header-admin .user-info {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
-.logo .title {
-    font-weight: 700;
+.header-admin .user-info i {
+    font-size: 1.5rem;
 }
 
-.logo .subtitle {
-    font-size: 12px;
+.header-admin h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
-.settings {
-    font-size: 18px;
+.header-admin .settings i {
+    font-size: 1.5rem;
     cursor: pointer;
 }
 
-/* Seções */
-section {
-    padding: 16px;
+/* Layout principal */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 20px;
 }
 
-.welcome h2 {
-    font-size: 16px;
+.section-title {
+    font-size: 1.2rem;
     font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 15px;
 }
 
 /* Cartões */
 .card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
-    margin-bottom: 16px;
+    background-color: var(--text-color-light);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card h3 {
-    font-size: 14px;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-/* Estatísticas */
-.stats {
+/* Cartão de estatística única */
+.card-stats-single {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background: #F2E1D8;
+    gap: 20px;
 }
 
-.stats-icon {
-    font-size: 30px;
+.card-stats-single .icon-container {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
 }
 
-/* Upload */
-.upload-item {
+.card-stats-single .stats-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color-dark);
+}
+
+.card-stats-single .stats-value {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Cartão de upload */
+.card-upload {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.insert-btn {
-    background: #8143AB;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-/* Estatísticas de uso */
-.usage-stats {
+.card-upload .upload-content {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
 }
 
-.usage-card {
-    flex: 1;
-    background: #F2E1D8;
+.card-upload .upload-content i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.btn-inserir {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-inserir:hover {
+    background-color: #69388a;
+}
+
+/* Grupo de cartões pequenos */
+.card-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.card-stats-small {
+    background-color: var(--secondary-color);
+    padding: 15px;
     border-radius: 10px;
-    padding: 8px;
-    text-align: center;
 }
 
-.big-text {
-    font-size: 18px;
-    font-weight: bold;
-    color: #8143AB;
+.card-stats-small .stats-label {
+    font-size: 0.9rem;
+    color: #666;
 }
 
-.small-text {
-    font-size: 12px;
+.card-stats-small .stats-total {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 5px 0;
 }
 
-.percent {
-    font-size: 11px;
-    color: #555;
+.card-stats-small .stats-gain, .stats-share {
+    font-size: 0.8rem;
+    color: #666;
 }
 
-/* Comentários */
-.comment {
-    font-size: 12px;
+.card-stats-small .stats-topic {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 5px 0;
+}
+
+/* Cartão de comentário */
+.card-comment {
+    padding: 25px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
 .comment-author {
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.comment-time {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.comment-body {
+    margin-bottom: 20px;
 }
 
 .comment-text {
-    margin: 4px 0;
-}
-
-.comment-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 .comment-actions {
     display: flex;
-    gap: 5px;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
-.approve-btn {
-    background: #8143AB;
-    color: white;
+.btn-approve, .btn-reject {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-approve {
+    background-color: var(--btn-approve-color);
+    color: var(--text-color-light);
     border: none;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    cursor: pointer;
 }
 
-.reject-btn {
-    background: white;
-    color: #8143AB;
-    border: 1px solid #8143AB;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    cursor: pointer;
+.btn-approve:hover {
+    background-color: #69388a;
+}
+
+.btn-reject {
+    background-color: var(--btn-reject-color);
+    color: var(--text-color-dark);
+    border: 1px solid #ccc;
+}
+
+.btn-reject:hover {
+    background-color: #dcdcdc;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 576px) {
+    .header-admin h1 {
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card-stats-single {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card-stats-single .icon-container {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .card-stats-small {
+        padding: 10px;
+    }
+
+    .card-stats-small .stats-total, .stats-topic {
+        font-size: 1.5rem;
+    }
+
+    .card-comment {
+        padding: 15px;
+    }
+
+    .comment-actions {
+        justify-content: center;
+    }
+
+    .btn-approve, .btn-reject {
+        flex: 1;
+        text-align: center;
+    }
 }
