@@ -1,87 +1,96 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const titleInput = document.querySelector("#titulo");
-    const descInput = document.querySelector("#descricao");
-    const sendBtn = document.querySelector("#enviarSugestao");
-    const suggestionsList = document.querySelector("#listaSugestoes");
+function carregarSugestoes() {
+  let sugestoes = JSON.parse(localStorage.getItem("sugestoes")) || [];
+  let lista = document.getElementById("listaSugestoes");
+  lista.innerHTML = "";
 
-    // Carregar sugestões salvas
-    let sugestoes = JSON.parse(localStorage.getItem("sugestoes")) || [];
-    renderSugestoes();
+  sugestoes.forEach(s => {
+    let div = document.createElement("div");
+    div.classList.add("sugestao");
 
-    // Função para renderizar as sugestões na tela
-    function renderSugestoes() {
-        suggestionsList.innerHTML = "";
-        sugestoes.forEach((sugestao, index) => {
-            const item = document.createElement("div");
-            item.classList.add("sugestao");
-
-            item.innerHTML = `
-                <div>
-                    <strong>${sugestao.titulo}</strong>
-                    <p>${sugestao.descricao}</p>
-                    <small>Por: ${sugestao.autor}</small>
-                </div>
-                <div class="acoes">
-                    <button class="votar">👍 ${sugestao.votos}</button>
-                    <button class="excluir">🗑</button>
-                </div>
-            `;
-
-            // Botão de votar
-            item.querySelector(".votar").addEventListener("click", () => {
-                sugestoes[index].votos++;
-                salvarSugestoes();
-                renderSugestoes();
-            });
-
-            // Botão de excluir
-            item.querySelector(".excluir").addEventListener("click", () => {
-                sugestoes.splice(index, 1);
-                salvarSugestoes();
-                renderSugestoes();
-            });
-
-            suggestionsList.appendChild(item);
-        });
-    }
-
-    // Função para salvar no navegador
-    function salvarSugestoes() {
-        localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
-    }
-
-    // Evento do botão Enviar
-    sendBtn.addEventListener("click", () => {
-        const titulo = titleInput.value.trim();
-        const descricao = descInput.value.trim();
-
-        if (titulo === "" || descricao === "") {
-            alert("Por favor, preencha todos os campos!");
-            return;
+    let arquivosHTML = "";
+    if (s.arquivos && s.arquivos.length > 0) {
+      arquivosHTML = "<div class='arquivos'>";
+      s.arquivos.forEach(arq => {
+        // Se for imagem
+        if (arq.tipo.startsWith("image/")) {
+          arquivosHTML += `<img src="${arq.url}" alt="Imagem" style="max-width:100%;border-radius:8px;margin:5px 0;">`;
         }
+        // Se for vídeo
+        else if (arq.tipo.startsWith("video/")) {
+          arquivosHTML += `<video controls style="max-width:100%;border-radius:8px;margin:5px 0;">
+                             <source src="${arq.url}" type="${arq.tipo}">
+                           </video>`;
+        }
+        // Se for PDF ou outro documento
+        else {
+          arquivosHTML += `<a href="${arq.url}" target="_blank" style="display:block;margin:5px 0;color:#8143AB;font-weight:600;">
+                             📄 ${arq.nome}
+                           </a>`;
+        }
+      });
+      arquivosHTML += "</div>";
+    }
 
-        // Criar sugestão
-        const novaSugestao = {
-            titulo: titulo,
-            descricao: descricao,
-            autor: "Você",
-            votos: 0
-        };
-
-        sugestoes.push(novaSugestao);
-        salvarSugestoes();
-        renderSugestoes();
-
-        // Limpar campos
-        titleInput.value = "";
-        descInput.value = "";
-
-        const voltarBtn = document.querySelector("#voltarBtn");
-if (voltarBtn) {
-    voltarBtn.addEventListener("click", () => {
-        window.history.back();
-    });
+    div.innerHTML = `
+      <strong>${s.titulo}</strong>
+      <p>${s.descricao}</p>
+      ${arquivosHTML}
+    `;
+    lista.appendChild(div);
+  });
 }
 
-    });
-});
+function salvarSugestao() {
+  let titulo = document.getElementById("titulo").value;
+  let descricao = document.getElementById("descricao").value;
+  let arquivoInput = document.getElementById("arquivo");
+
+  if (!titulo || !descricao) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  let sugestoes = JSON.parse(localStorage.getItem("sugestoes")) || [];
+  let arquivos = [];
+
+  if (arquivoInput.files.length > 0) {
+    for (let i = 0; i < arquivoInput.files.length; i++) {
+      let file = arquivoInput.files[i];
+      let reader = new FileReader();
+
+      reader.onload = (function (f) {
+        return function (e) {
+          arquivos.push({
+            nome: f.name,
+            tipo: f.type,
+            url: e.target.result
+          });
+
+          // Quando terminar de ler todos os arquivos, salvar sugestão
+          if (arquivos.length === arquivoInput.files.length) {
+            sugestoes.push({ titulo, descricao, arquivos });
+            localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
+            carregarSugestoes();
+
+            // limpar campos
+            document.getElementById("titulo").value = "";
+            document.getElementById("descricao").value = "";
+            arquivoInput.value = "";
+          }
+        };
+      })(file);
+
+      reader.readAsDataURL(file); // lê o arquivo como base64
+    }
+  } else {
+    sugestoes.push({ titulo, descricao, arquivos });
+    localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
+    carregarSugestoes();
+
+    document.getElementById("titulo").value = "";
+    document.getElementById("descricao").value = "";
+  }
+}
+
+window.onload = carregarSugestoes;
+

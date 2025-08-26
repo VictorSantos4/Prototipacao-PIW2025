@@ -1,64 +1,209 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sugestões</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Sugestoes.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sugestões</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #fff;
+      padding: 20px;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    header .voltar {
+      text-decoration: none;
+      color: #8143AB;
+      font-size: 22px;
+      margin-right: 10px;
+    }
+
+    h2 {
+      margin: 0 auto;
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 100px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #8143AB;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    .sugestoes {
+      margin-top: 30px;
+    }
+
+    .sugestao {
+      background: #F2E1D8;
+      padding: 14px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .sugestao strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .arquivos img, 
+    .arquivos video {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 5px 0;
+    }
+
+    .arquivos a {
+      display: block;
+      margin: 5px 0;
+      color: #8143AB;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <button id="voltarBtn" class="btn-voltar"></button> <a href="../Biblioteca/Biblioteca.html">⭠</a></button>
 
-        <h2 class="page-title">Sugestões</h2>
+  <header>
+    <a href="biblioteca.html" class="voltar">←</a>
+    <h2>Sugestões</h2>
+  </header>
 
-        <!-- Formulário -->
-        <section class="card">
-            <h3>Envie sua ideia</h3>
-            <p class="subtitle">Ajude a melhorar nosso app com suas sugestões</p>
-            <input type="text" placeholder="Título da sua sugestão">
-            <textarea placeholder="Descreva sua ideia..."></textarea>
-            <button class="send-btn">Enviar</button>
-        </section>
+  <section>
+    <h3>Envie sua ideia</h3>
+    <p>Ajude a melhorar nosso app com suas sugestões</p>
 
-        <!-- Lista de sugestões -->
-        <section class="card">
-            <h3>Sugestões populares</h3>
+    <input type="text" id="titulo" placeholder="Título da sua sugestão">
+    <textarea id="descricao" placeholder="Descreva sua ideia..."></textarea>
+    
+    <!-- Upload do arquivo (opcional) -->
+    <input type="file" id="arquivo" accept="image/*,video/*,.pdf,.doc,.docx" multiple>
 
-            <div class="suggestion-item">
-                <div>
-                    <strong>Modo noturno para leitura</strong>
-                    <p>Por: Maria S.</p>
-                </div>
-                <span class="votes">87</span>
-            </div>
+    <button onclick="salvarSugestao()">Enviar</button>
+  </section>
 
-            <div class="suggestion-item">
-                <div>
-                    <strong>Podcasts sobre os temas</strong>
-                    <p>Por: Carlos M.</p>
-                </div>
-                <span class="votes">64</span>
-            </div>
+  <section class="sugestoes">
+    <h3>Sugestões populares</h3>
+    <div id="listaSugestoes"></div>
+  </section>
 
-            <div class="suggestion-item">
-                <div>
-                    <strong>Grupos de estudo</strong>
-                    <p>Por: João P.</p>
-                </div>
-                <span class="votes">42</span>
-            </div>
+  <script>
+    function carregarSugestoes() {
+      let sugestoes = JSON.parse(localStorage.getItem("sugestoes")) || [];
+      let lista = document.getElementById("listaSugestoes");
+      lista.innerHTML = "";
 
-            <div class="history-box">
-                <p>📌 30+ ideias implementadas</p>
-                <a href="#">Ver histórico</a>
-            </div>
-        </section>
-    </div>
+      sugestoes.forEach(s => {
+        let div = document.createElement("div");
+        div.classList.add("sugestao");
 
+        let arquivosHTML = "";
+        if (s.arquivos && s.arquivos.length > 0) {
+          arquivosHTML = "<div class='arquivos'>";
+          s.arquivos.forEach(arq => {
+            if (arq.tipo.startsWith("image/")) {
+              arquivosHTML += `<img src="${arq.url}" alt="Imagem">`;
+            } else if (arq.tipo.startsWith("video/")) {
+              arquivosHTML += `<video controls>
+                                <source src="${arq.url}" type="${arq.tipo}">
+                              </video>`;
+            } else {
+              arquivosHTML += `<a href="${arq.url}" target="_blank">📄 ${arq.nome}</a>`;
+            }
+          });
+          arquivosHTML += "</div>";
+        }
 
-     <script src="sugestoes.js"></script>
+        div.innerHTML = `
+          <strong>${s.titulo}</strong>
+          <p>${s.descricao}</p>
+          ${arquivosHTML}
+        `;
+        lista.appendChild(div);
+      });
+    }
+
+    function salvarSugestao() {
+      let titulo = document.getElementById("titulo").value;
+      let descricao = document.getElementById("descricao").value;
+      let arquivoInput = document.getElementById("arquivo");
+
+      if (!titulo || !descricao) {
+        alert("Preencha título e descrição!");
+        return;
+      }
+
+      let sugestoes = JSON.parse(localStorage.getItem("sugestoes")) || [];
+      let arquivos = [];
+
+      if (arquivoInput.files.length > 0) {
+        let total = arquivoInput.files.length;
+        let carregados = 0;
+
+        for (let i = 0; i < total; i++) {
+          let file = arquivoInput.files[i];
+          let reader = new FileReader();
+
+          reader.onload = function (e) {
+            arquivos.push({
+              nome: file.name,
+              tipo: file.type,
+              url: e.target.result
+            });
+
+            carregados++;
+            if (carregados === total) {
+              sugestoes.push({ titulo, descricao, arquivos });
+              localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
+              carregarSugestoes();
+            }
+          };
+
+          reader.readAsDataURL(file);
+        }
+      } else {
+        // Se não tiver arquivo, salva só o texto
+        sugestoes.push({ titulo, descricao, arquivos });
+        localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
+        carregarSugestoes();
+      }
+
+      document.getElementById("titulo").value = "";
+      document.getElementById("descricao").value = "";
+      arquivoInput.value = "";
+    }
+
+    window.onload = carregarSugestoes;
+  </script>
+
 </body>
 </html>
-
