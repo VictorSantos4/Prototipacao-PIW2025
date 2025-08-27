@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (campo === imagem) {
       if (imagem.files.length === 0) {
         imagem.parentElement.classList.add("erro");
-        msgErroImagem.textContent = "Envie uma imagem para continuar.";
+        msgErroImagem.textContent = "Selecione pelo menos um arquivo para continuar.";
       } else {
         imagem.parentElement.classList.remove("erro");
         msgErroImagem.textContent = "";

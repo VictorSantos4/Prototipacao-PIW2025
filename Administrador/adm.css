@@ -20,6 +20,15 @@
     padding: 0;
 }
 
+a{
+    list-style: none;
+    text-transform: none;
+    text-decoration: none;
+    color: white;
+    text-overflow: none;
+}
+
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color-page);

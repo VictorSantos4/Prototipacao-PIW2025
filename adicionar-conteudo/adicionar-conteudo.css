@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
   background: #f7f7f7;
   margin: 0;
   padding: 0;
@@ -9,6 +14,13 @@ body {
   height: 100vh;
 }
 
+a{
+    list-style: none;
+    text-transform: none;
+    text-decoration: none;
+    color: #8143AB;
+    text-overflow: none;
+}
 .container {
   background: #fff;
   padding: 20px;
@@ -34,7 +46,7 @@ label {
 }
 
 input, select, textarea {
-  width: 100%;
+  width: 100%; 
   padding: 10px;
   margin-top: 5px;
   border-radius: 6px;
@@ -46,6 +58,7 @@ input, select, textarea {
 textarea {
   resize: none;
   height: 80px;
+  max-width: 95%;
 }
 
 .upload-area {
@@ -125,6 +138,9 @@ input:checked + .slider:before {
   padding: 10px 15px;
   border-radius: 6px;
   cursor: pointer;
+  list-style: none;
+  text-decoration: none;
+  text-transform: none;
 }
 
 .salvar {
@@ -143,7 +159,6 @@ input:checked + .slider:before {
   transition: all 0.3s ease;
 }
 
-/* Estilo de erro */
 .erro {
   border: 1.5px solid rgba(255, 0, 0, 0.7) !important;
   background-color: rgba(255, 230, 230, 0.4);
@@ -151,7 +166,6 @@ input:checked + .slider:before {
   transition: all 0.3s ease;
 }
 
-/* Mensagem de erro */
 .msg-erro {
   color: red;
   font-size: 0.9rem;
@@ -159,4 +173,6 @@ input:checked + .slider:before {
   display: block;
 }
 
-
+.t1{
+  max-width: 94%;
+}

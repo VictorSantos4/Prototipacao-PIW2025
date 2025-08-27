@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Sentimentos</title>
+    <link rel="stylesheet" href="{% static 'Questionario/css/Questionario.css' %}">
+    <script src="{% static 'Questionario/js/Questionario.js' %}"></script>
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Gostaríamos de saber: como você está se sentindo agora?</h1>
+            
+            <form id="feelingForm">
+                {% csrf_token %}
+                <div class="options-grid">
+                    <div class="option">
+                        <input type="radio" id="feeling1" name="feeling" value="good_excited">
+                        <label for="feeling1">Me sentindo bem e animado(a)</label>
+                    </div>
+                    
+                    <div class="option">
+                        <input type="radio" id="feeling2" name="feeling" value="calm_peaceful">
+                        <label for="feeling2">Tranquilo(a) e em paz</label>
+                    </div>
+                    
+                    <div class="option">
+                        <input type="radio" id="feeling3" name="feeling" value="happy_energetic">
+                        <label for="feeling3">Feliz e com energia</label>
+                    </div>
+                    
+                    <div class="option">
+                        <input type="radio" id="feeling4" name="feeling" value="motivated_confident">
+                        <label for="feeling4">Motivado(a) e confiante</label>
+                    </div>
+                    
+                    <div class="option">
+                        <input type="radio" id="feeling5" name="feeling" value="neutral">
+                        <label for="feeling5">Estou ok, só seguindo o dia</label>
+                    </div>
+                    
+                    <div class="option">
+                        <input type="radio" id="feeling6" name="feeling" value="confused">
+                        <label for="feeling6">Um pouco confuso(a), mas tentando entender</label>
+                    </div>
+                    
+                    <div class="option">
+                        <input type="radio" id="feeling7" name="feeling" value="anxious">
+                        <label for="feeling7">Ansioso(a) e com a mente agitada</label>
+                    </div>
+                    
+                    <div class="option">
+                        <input type="radio" id="feeling8" name="feeling" value="overwhelmed">
+                        <label for="feeling8">Sobrecarregado(a) e cansado(a)</label>
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button type="submit" class="submit-btn">Enviar resposta</button>
+                    <button type="button" class="skip-btn" id="skipBtn">Skip</button>
+                </div>
+            </form>
+            
+            <div class="confirmation" id="confirmation">
+                Obrigado por compartilhar como você está se sentindo!
+            </div>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Enviando sua resposta...</p>
+            </div>
+        </div>
+        
+        <footer>
+            Projeto Integrador Web - Sistema de Avaliação de Sentimentos
+        </footer>
+    </div>
+
+    <script src="{% static 'js/feelingForm.js' %}"></script>
+</body>
+</html>
