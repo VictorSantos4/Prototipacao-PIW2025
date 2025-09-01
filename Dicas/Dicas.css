@@ -4,17 +4,10 @@ body {
   background-color: #f2e1d8;
   color: #1d142e;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  
 }
 
-header {
-  background-color: #8143ab;
-  color: white;
-  width: 100%;
-  padding: 1rem;
-  text-align: center;
-}
 
 .dica-container {
   margin: 2rem;
@@ -74,3 +67,154 @@ a{
     text-transform: none;
     color: white;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+/* Layout do container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mobile-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 110px;
+  background: #bd8adf; /* roxo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 1000;
+  
+}
+
+.linha-do-tempo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:  0;
+  padding: 0 20px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.passo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.passo p {
+  font-size: 0.9rem;
+  color: #444;
+  margin: 0;
+}
+
+/*----------------------"Icone de INICIO"------------------------------------*/
+.icone-circulo-home a{
+  background-color: #f2e1d8;
+  color: #7b2fd1;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 5px;
+  transition: all 0.3s ease;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.icone-circulo-home a:hover{
+  background-color: #7b2fd1;
+  transform: scale(1.1);
+  color: white;
+}
+/*---------------------------------------------------------------------------*/
+
+/*--------------------------"Icone das DICAS"-------------------------------*/
+
+.icone-circulo-idea a{
+  background-color: #7b2fd1;
+  color: #f2e1d8;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 5px;
+  transition: all 0.3s ease;
+  width: 62px;
+  height: 62px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
+  text-transform: none;
+}
+/*--------------------------------------------------------------------------*/
+
+/*---------------------"Icone do QUESTIONARIO" -----------------------------*/
+.icone-circulo-library a{
+  background-color: #f2e1d8;
+  color: #7b2fd1;
+  border-radius: 50%;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 5px;
+  transition: all 0.3s ease;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
+  text-transform: none;
+}
+.icone-circulo-library a:hover{
+  background-color: #7b2fd1;
+  transform: scale(1.1);
+  color: white;
+}
+/*-------------------------------------------------------------------------*/
+
+/*--------------------------"Icone do PERFIL--------------------------------*/
+.icone-circulo-profile a{
+  background-color: #f2e1d8;
+  border-radius: 50%;
+  color:#7b2fd1;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 5px;
+  transition: all 0.3s ease;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
+  text-transform: none;
+}
+.icone-circulo-profile a:hover{
+  background-color: #7b2fd1;
+  transform: scale(1.1);
+  color: white;
+}
+/*--------------------------------------------------------------------------*/

@@ -69,7 +69,7 @@ body {
 
 .passo:hover .icone-circulo {
   background-color: #7b2fd1;
-  transform: scale(1.2);
+  transform: scale(1.1);
   color: white;
 }
 
@@ -78,5 +78,3 @@ body {
   color: #444;
   margin: 0;
 }
-
-
